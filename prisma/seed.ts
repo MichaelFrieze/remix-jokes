@@ -13,6 +13,7 @@ seed();
 
 function getJokes() {
   // shout-out to https://icanhazdadjoke.com/
+  // can run npx prisma studio to open an app that allows access to database in browser
 
   return [
     {
