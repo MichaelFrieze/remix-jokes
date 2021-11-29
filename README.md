@@ -1,6 +1,7 @@
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)
+- [Guide for this jokes project](https://remix.run/docs/en/v1/tutorials/jokes)
 
 ## Development
 
@@ -50,4 +51,13 @@ cd my-new-remix-app
 rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
+```
+
+### Setting up ENV variables
+
+create a `.env` file in your project root, and add the following lines:
+
+```
+DATABASE_URL="file:./dev.db"
+SESSION_SECRET="whatever you want goes here"
 ```
