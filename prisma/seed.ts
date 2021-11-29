@@ -1,10 +1,19 @@
 import { PrismaClient } from '@prisma/client';
-let db = new PrismaClient();
+let prisma = new PrismaClient();
 
 async function seed() {
+  let kody = await prisma.user.create({
+    data: {
+      username: 'kody',
+      // this is a hashed version of "twixrox"
+      passwordHash:
+        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
+    },
+  });
   await Promise.all(
     getJokes().map((joke) => {
-      return db.joke.create({ data: joke });
+      let data = { jokesterId: kody.id, ...joke };
+      return prisma.joke.create({ data });
     })
   );
 }
@@ -13,7 +22,6 @@ seed();
 
 function getJokes() {
   // shout-out to https://icanhazdadjoke.com/
-  // can run npx prisma studio to open an app that allows access to database in browser
 
   return [
     {
@@ -46,3 +54,5 @@ function getJokes() {
     },
   ];
 }
+
+// can run npx prisma studio to open an app that allows access to database in browser
