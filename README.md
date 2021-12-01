@@ -53,11 +53,46 @@ rm -rf app
 cp -R ../my-old-remix-app/app app
 ```
 
-### Setting up ENV variables
+### Setup
 
-create a `.env` file in your project root, and add the following lines:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env` file in the project root, and add the following lines:
 
 ```
 DATABASE_URL="file:./dev.db"
 SESSION_SECRET="whatever you want goes here"
+```
+
+Create a database file in `prisma/dev.db` and push all the necessary changes to the database to match the schema.
+
+```bash
+npx prisma db push
+```
+
+If the database gets messed up, you can delete the `prisma/dev.db` file and run `npx prisma db push` again. It's a good idea to run this every time a change gets made to the `schema.prisma` file.
+
+Next, seed the database with the `prisma/seeds.js` file.
+
+```bash
+node --require esbuild-register prisma/seed.ts
+```
+
+You can run `npx prisma studio` to access the database in the browser.
+
+Finally:
+
+```
+npm run dev
+```
+
+You can login with a user that came from the seed:
+
+```
+kody
+twixrox
 ```
