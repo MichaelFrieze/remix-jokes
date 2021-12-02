@@ -171,3 +171,10 @@ export function ErrorBoundary({ error }: { error: Error }) {
     </div>
   );
 }
+
+/* 
+If not using optimistic UI, another way to do a transition:
+  <button type="submit" className="button">
+    {transition.submission ? 'Adding...' : 'Add'}
+  </button>;
+*/
