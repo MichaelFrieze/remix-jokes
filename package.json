@@ -10,7 +10,10 @@
     "build": "remix build",
     "dev": "remix dev",
     "postinstall": "remix setup node",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "prisma:push": "npx prisma db push",
+    "prisma:seed": "node --require esbuild-register prisma/seed.ts",
+    "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^3.5.0",
